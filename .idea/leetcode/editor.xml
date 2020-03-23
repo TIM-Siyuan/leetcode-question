@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditor">
+    <option name="projectConfig">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/java/com/jsy/leetcode/editor/en/TwoSum.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/jsy/leetcode/editor/en/TwoSum.java" />
+              <option name="questionId" value="1" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/jsy/leetcode/editor/en/ValidParentheses.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/jsy/leetcode/editor/en/ValidParentheses.java" />
+              <option name="questionId" value="20" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/FourSum.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/FourSum.java" />
+              <option name="questionId" value="18" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/MoveZeroes.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/MoveZeroes.java" />
+              <option name="questionId" value="283" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/RemoveElement.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/RemoveElement.java" />
+              <option name="questionId" value="27" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/TopKFrequentElements.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/TopKFrequentElements.java" />
+              <option name="questionId" value="347" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/TwoSum.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/TwoSum.java" />
+              <option name="questionId" value="1" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/ValidParentheses.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/ValidParentheses.java" />
+              <option name="questionId" value="20" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/shuzijun/leetcode/editor/en/ValidParentheses.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/shuzijun/leetcode/editor/en/ValidParentheses.java" />
+              <option name="questionId" value="20" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
