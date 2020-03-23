@@ -15,7 +15,7 @@
 // Related Topics Array Two Pointers
 
 
-package solution;
+package com.leetcode.editor.en;
 
 public class MoveZeroes{
     public static void main(String[] args) {
