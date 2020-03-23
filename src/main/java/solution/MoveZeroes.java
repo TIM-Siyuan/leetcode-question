@@ -15,9 +15,7 @@
 // Related Topics Array Two Pointers
 
 
-package com.leetcode.editor.en;
-
-import java.util.ArrayList;
+package solution;
 
 public class MoveZeroes{
     public static void main(String[] args) {

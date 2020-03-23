@@ -51,7 +51,7 @@
 //} Related Topics Array Two Pointers
 
 
-package com.leetcode.editor.en;
+package solution;
 
 public class RemoveElement{
     public static void main(String[] args) {

@@ -25,7 +25,7 @@
 // Related Topics Hash Table Heap
 
 
-package com.leetcode.editor.en;
+package solution;
 import java.util.*;
 
 public class TopKFrequentElements{
