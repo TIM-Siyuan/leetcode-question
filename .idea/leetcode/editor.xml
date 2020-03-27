@@ -27,6 +27,22 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/KthLargestElementInAnArray.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/KthLargestElementInAnArray.java" />
+              <option name="questionId" value="215" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/MergeSortedArray.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/MergeSortedArray.java" />
+              <option name="questionId" value="88" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/leetcode/editor/en/MoveZeroes.java">
           <value>
             <LeetcodeEditor>
