@@ -28,7 +28,25 @@ public class MinimumSizeSubarraySum{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
-        
+        if(s <= 0 || nums == null)
+            throw new IllegalArgumentException("Illegal Arguments");
+        int l = 0, r = -1;
+        int sum = 0;
+        int res = nums.length + 1;
+        while(r+1 < nums.length){
+            while(r+1 < nums.length && sum < s)
+                sum += nums[++r];
+            if(sum >= s)
+                res = Math.min(res, r-l+1);
+            while(l < nums.length && sum >= s){
+                sum -= nums[l++];
+                if(sum >= s)
+                    res = Math.min(res, r-l+1);
+            }
+        }
+        if(res == nums.length+1)
+            return 0;
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
