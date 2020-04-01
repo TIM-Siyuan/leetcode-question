@@ -17,6 +17,8 @@
 
 package com.leetcode.editor.en;
 
+import java.util.HashMap;
+
 public class TwoSum{
     public static void main(String[] args) {
        Solution solution = new TwoSum().new Solution();
@@ -26,16 +28,19 @@ public class TwoSum{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        if(nums.length < 2) throw new IllegalArgumentException("Illegal argument numbers");
+        HashMap<Integer, Integer> record = new HashMap<Integer, Integer>();
         for(int i = 0; i < nums.length; i++){
-            for(int j = i+1; j < nums.length; j++){
-                if(nums[i] + nums[j] == target){
-                    int[] res = {i, j};
-                    return res;
-                }
+            record.put(nums[i], i);
+        }
+        for(int i = 0; i < nums.length; i++){
+            Integer index = record.get(target - nums[i]);
+            if(index != null && index != i){
+                int[] res = {i, index};
+                return res;
             }
         }
-        throw new IllegalArgumentException("The input has no solution");
+
+        throw new IllegalStateException("the input has no solution");
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
