@@ -38,6 +38,12 @@ public class RemoveNthNodeFromEndOfList{
  * }
  */
 class Solution {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         assert(n>=0);
         ListNode dummyhead = new ListNode(0);

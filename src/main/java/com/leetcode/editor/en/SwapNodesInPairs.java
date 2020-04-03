@@ -31,6 +31,11 @@ public class SwapNodesInPairs{
  * }
  */
 class Solution {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
     public ListNode swapPairs(ListNode head) {
         ListNode dummyhead = new ListNode(0);
         dummyhead.next = head;

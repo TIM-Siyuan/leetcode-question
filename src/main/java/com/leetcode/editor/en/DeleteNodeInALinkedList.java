@@ -57,6 +57,12 @@ public class DeleteNodeInALinkedList{
  * }
  */
 class Solution {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+
     public void deleteNode(ListNode node) {
         if(node == null)
             return;

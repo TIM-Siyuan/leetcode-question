@@ -34,11 +34,11 @@ public class ReverseLinkedList{
  * }
  */
 class Solution {
-    /*public class ListNode {
+    public class ListNode {
         int val;
         ListNode next;
         ListNode(int x) { val = x; }
-    }*/
+    }
 
     public ListNode reverseList(ListNode head) {
        /* ListNode pre = null;
