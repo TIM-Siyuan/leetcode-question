@@ -56,7 +56,7 @@ class Solution {
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode node = root;
         //一开始时stack为空，所以判断条件node不为空；中间过程只要stack不为空则可；结束时stack为空；
-        //先前已经判断了root不为空，所以也可以选择先压入node；则判断条件只需要stack不为空则可；
+        //先前已经判断了root不为空，但是不可以先压入node，因为while循环时会压入root，这样则压入两次root；；
         while(!stack.isEmpty() || node != null){
             if(node == null){
                 node = stack.pop();
