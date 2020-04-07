@@ -23,6 +23,13 @@ import java.util.List;
 import java.util.Stack;
 
 public class BinaryTreeInorderTraversal{
+    public static class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x){val = x;}
+    }
+
     public static void main(String[] args) {
        Solution solution = new BinaryTreeInorderTraversal().new Solution();
        
