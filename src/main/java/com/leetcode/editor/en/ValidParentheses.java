@@ -80,11 +80,10 @@ class Solution {
                 if(c != match)
                     return false;
             }
-
-            if(stack.size() != 0)
-                return false;
-            return true;
         }
+        if(stack.size() != 0)
+            return false;
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
