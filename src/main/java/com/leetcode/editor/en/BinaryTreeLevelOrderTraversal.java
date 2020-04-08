@@ -67,6 +67,7 @@ class Solution {
             TreeNode node = front.getKey();
             int level = front.getValue();
 
+            //size()是指对象个数，所以level==0的时候，list个数为1；length()是指对象元素个数；
             if(level == res.size())
                 res.add(new ArrayList<Integer>());
             assert level < res.size();
