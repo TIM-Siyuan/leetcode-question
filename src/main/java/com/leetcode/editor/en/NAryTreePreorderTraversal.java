@@ -72,7 +72,7 @@ class Node {
 */
 
 class Solution {
-    /*class Node {
+    class Node {
         public int val;
         public List<Node> children;
 
@@ -86,7 +86,7 @@ class Solution {
             val = _val;
             children = _children;
         }
-    };*/
+    };
 
     public List<Integer> preorder(Node root) {
         List<Integer> res = new ArrayList<>();
