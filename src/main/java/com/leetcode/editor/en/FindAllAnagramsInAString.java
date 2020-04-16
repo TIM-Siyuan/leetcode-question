@@ -38,9 +38,8 @@
 
 package com.leetcode.editor.en;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FindAllAnagramsInAString{
@@ -48,11 +47,14 @@ public class FindAllAnagramsInAString{
        Solution solution = new FindAllAnagramsInAString().new Solution();
        solution.findAnagrams("cbaebabacd", "abc");
     }
-  
+
+//   https://blog.csdn.net/yy254117440/article/details/53025142
+//   https://www.jianshu.com/p/bfb990b4ba22
+
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        List<Integer> list = new ArrayList<Integer>();
+        /*List<Integer> list = new ArrayList<Integer>();
         if(s == null || p == null || s.length() < p.length())
            return list;
         int[] ap = new int[26];
@@ -64,6 +66,28 @@ class Solution {
             if(i >= p.length()) --as[s.charAt(i-p.length()) - 'a'];
             ++as[s.charAt(i) - 'a'];
             if(Arrays.equals(ap, as)) list.add(i+1-p.length());
+        }
+        return list;*/
+
+        List<Integer> list = new ArrayList<Integer>();
+        if (s == null || s.length() == 0 || s.length() < p.length()) {
+            return list;
+        }
+        int[] arr = new int[256];
+        for (char ch : p.toCharArray()) {
+            arr[ch]++;
+        }
+        int left = 0, right = 0, count = p.length();
+        while (right < s.length()) {
+            if (arr[s.charAt(right++)]-- >= 1) {
+                count--;
+            }
+            if (count == 0) {
+                list.add(left);
+            }
+            if (arr[s.charAt(left++)]++ >= 0 && right - left == p.length() ) {
+                count++;
+            }
         }
         return list;
     }
