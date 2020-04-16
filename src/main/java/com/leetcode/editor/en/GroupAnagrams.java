@@ -52,9 +52,19 @@ class Solution {
             }
         }
 
-        for(List res : map.values()){
+        for(Map.Entry<String, List<String>> entry: map.entrySet()){
+            List<String> res = entry.getValue();
             list.add(res);
         }
+
+//        不同遍历Hashmap的方法
+//        for(List res : map.values()){
+//            list.add(res);
+//        }
+
+//        for(String key:map.keySet()){ 效率最低
+//            list.add(map.get(key));
+//        }
 
         return list;
     }
