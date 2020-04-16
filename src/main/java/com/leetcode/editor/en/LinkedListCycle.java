@@ -54,6 +54,8 @@
 
 package com.leetcode.editor.en;
 
+import java.util.List;
+
 public class LinkedListCycle{
     public static void main(String[] args) {
        Solution solution = new LinkedListCycle().new Solution();
@@ -73,6 +75,14 @@ public class LinkedListCycle{
  * }
  */
 public class Solution {
+    class ListNode{
+        int val;
+        ListNode next;
+        ListNode(int x){
+            val = x;
+            next = null;
+        }
+    }
     public boolean hasCycle(ListNode head) {
         if(head == null || head.next == null)
             return false;
