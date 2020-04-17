@@ -65,7 +65,7 @@ public class ColoringABorder{
     }
 //  tips: 使用队列, while只压入四向联通的点, 被孤立断开的点不会继续遍历;
 //  使用两个for循环则会遍历所有的点, floodfill即使断开了也会遍历; 因为if不能屏蔽断开的
-//  此题while, 需要设立isBorder标识, 标记边界的点，所以即使孤立了最后遍历时也会被改; 最后使用for循环再遍历所有的点, 效率低;
+//  此题while, 需要设立isBorder标识, 标记边界的点，所以即使孤立了最后遍历时也会被改; 最后使用for循环再遍历所有的点;
 //  用两个for循环，也需要标记;
 
     //leetcode submit region begin(Prohibit modification and deletion)
