@@ -60,7 +60,8 @@ import java.util.Queue;
 public class ColoringABorder{
     public static void main(String[] args) {
        Solution solution = new ColoringABorder().new Solution();
-       
+       int[][] g = {{1,2,1,2,1,2},{2,2,2,2,1,2}, {1,2,2,2,1,2}};
+       solution.colorBorder(g, 1,3, 1);
     }
 //  tips: 使用队列, while只压入四向联通的点, 被孤立断开的点不会继续遍历;
 //  使用两个for循环则会遍历所有的点, floodfill即使断开了也会遍历; 因为if不能屏蔽断开的
