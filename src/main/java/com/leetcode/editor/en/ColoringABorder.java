@@ -54,7 +54,6 @@
 
 package com.leetcode.editor.en;
 
-import java.net.HttpURLConnection;
 import java.util.LinkedList;
 import java.util.Queue;
 
