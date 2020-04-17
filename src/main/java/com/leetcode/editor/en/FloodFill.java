@@ -52,8 +52,9 @@ public class FloodFill{
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-//  法一：没法加visited，效率不高
-    /*private int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+//  法一: 使用queue,所以不是四联通的不会入队；使用双重for循环会遍历所有，将不是四联通的也改了
+    private int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    private boolean[][] visited;
     private int[][] image;
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int oldColor = image[sr][sc];
@@ -61,16 +62,20 @@ class Solution {
         if(oldColor == newColor) return image;
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[] {sr, sc});
+        visited = new boolean[image.length][image[0].length];
         while(!queue.isEmpty()){
             int[] temp = queue.poll();
             int x = temp[0]; int y = temp[1];
             image[x][y] = newColor;
             for(int d = 0; d < dirs.length; d++){
                 int nextx = x + dirs[d][0], nexty = y + dirs[d][1];
-                if(!inArea(nextx, nexty) || image[nextx][nexty] != oldColor) {
+                /*if(!inArea(nextx, nexty) || image[nextx][nexty] != oldColor) {
                     continue;
+                }*/
+                if(inArea(nextx, nexty) && image[nextx][nexty] == oldColor && !visited[nextx][nexty]){
+                    visited[nextx][nexty] = true;
+                    queue.add(new int[]{nextx, nexty});
                 }
-                queue.add(new int[]{nextx, nexty});
             }
         }
         return image;
@@ -78,8 +83,8 @@ class Solution {
 
     private boolean inArea(int x, int y){
         return x >= 0 && x < image.length && y >= 0 && y < image[0].length;
-    }*/
-
+    }
+/*
 //  法二：递归，用for循环效率比四个if低
 //    private int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 //    private int[][] image;
@@ -92,25 +97,25 @@ class Solution {
         return image;
     }
 
-  /*  private boolean inArea(int x, int y){
+  *//*  private boolean inArea(int x, int y){
         return x >= 0 && x < image.length && y >= 0 && y < image[0].length;
-    }*/
+    }*//*
 
     private void helper(int[][] image, int sr, int sc, int newColor, int oldColor){
         if(image[sr][sc] == oldColor){
             image[sr][sc] = newColor;
-            /*for(int d = 0; d < dirs.length; d++){
+            *//*for(int d = 0; d < dirs.length; d++){
                 int x = sr + dirs[d][0]; int y = sc + dirs[d][1];
                 if(inArea(x, y)){
                     helper(image, x, y, newColor, oldColor);
                 }
-            }*/
+            }*//*
             if(sr-1 >= 0) helper(image, sr-1, sc, newColor, oldColor);
             if(sc-1 >= 0) helper(image, sr, sc-1, newColor, oldColor);
             if(sr+1 < image.length) helper(image, sr+1, sc, newColor, oldColor); //此处要用小于号，因为从0计数，sr+1 < length
             if(sc+1 < image[0].length) helper(image, sr, sc+1, newColor, oldColor);
         }
-    }
+    }*/
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
