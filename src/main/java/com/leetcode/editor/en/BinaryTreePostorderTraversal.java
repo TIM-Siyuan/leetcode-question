@@ -53,31 +53,46 @@ public class BinaryTreePostorderTraversal{
  * }
  */
 class Solution {
+   /* public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(root == null) return res;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode pre = null;
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()){
+            if(cur != null){
+                stack.push(cur);
+                cur = cur.left;
+            }else{
+                cur = stack.pop();
+                if(cur.right == null || pre == cur.right){
+                    res.add(cur.val);
+                    pre = cur;
+                    cur = null;
+                }else{
+                    stack.push(cur);
+                    cur = cur.right;
+                }
+            }
+        }
+        return res;
+    }*/
+
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        Stack<Integer> integerStack = new Stack<Integer>();
-        if(root == null)
-            return res;
-        // 0: go; 1:print
-        integerStack.push(0);
-        TreeNode node = root;
-        while(!stack.isEmpty() || node != null){
-            int command = integerStack.pop();
-            if(command == 1){
-                node = stack.pop();
-                res.add(node.val);
-            }
-            else {
-                assert(command == 0);
-                integerStack.push(1);
-                if(node.right != null)
-                    stack.push(node.right);
-                    integerStack.push(0);
-                if(node.left != null)
-                    stack.push(node.left);
-                    integerStack.push(0);
-            }
+        if(root == null) return res;
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<Integer> output = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode cur = stack.pop();
+            output.push(cur.val);
+            if(cur.left != null) stack.push(cur.left);
+            if(cur.right != null) stack.push(cur.right);
+        }
+
+        while(!output.isEmpty()){
+            res.add(output.pop());
         }
         return res;
     }
