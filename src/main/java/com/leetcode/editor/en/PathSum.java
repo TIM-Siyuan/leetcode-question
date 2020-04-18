@@ -25,9 +25,17 @@
 package com.leetcode.editor.en;
 
 public class PathSum{
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
     public static void main(String[] args) {
        Solution solution = new PathSum().new Solution();
-       
+       TreeNode root = new TreeNode();
+       solution.hasPathSum(root, 0);
     }
   
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -41,14 +49,10 @@ public class PathSum{
  * }
  */
 class Solution {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
 
     public boolean hasPathSum(TreeNode root, int sum) {
+        //此处不能return sum==0;
+        //因为root为空的话sum不为0; 且不存在的节点也给赋了0值，相当于凭空多了一条路;
         if(root == null) return false;
 
         if(root.left == null && root.right == null) return sum == root.val;
