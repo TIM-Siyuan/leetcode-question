@@ -70,6 +70,7 @@ class Solution {
         if(root == null) return true;
 
         int factor = Math.abs(MaxDepth(root.left) - MaxDepth(root.right));
+        //平衡二叉树定义：高度差不超过1 且左右子树都为平衡二叉树
         return factor < 2 && isBalanced(root.left) && isBalanced(root.right);
     }
 
