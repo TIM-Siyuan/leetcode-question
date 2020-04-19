@@ -56,6 +56,7 @@ class Solution {
     }
 
     private void findCombination(String digits, int index, String s){
+//        System.out.println(index + " : " + s);
         if(index == digits.length()){
             res.add(s);
             return;
@@ -65,9 +66,11 @@ class Solution {
         assert (c >= '0' && c <= '9' && c != '1');
         String letters = letterMap[c - '0'];
         for(int i = 0; i < letters.length(); i++){
+//          System.out.println("digits[" + index + "] = " + c + " , use " + letters.charAt(i));
             findCombination(digits, index + 1, s + letters.charAt(i));
         }
 
+//      System.out.println("digits[" + index + "] = " + c + " complete, return");
         return;
     }
 }
