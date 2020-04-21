@@ -74,7 +74,7 @@ class Solution {
         \
         root.left.right(有三个值, root.left.right, root.left, root; 链式, 则不会出现只判断左右孩子，导致root.left.right比root还大的错误)
 */
-    public boolean c(TreeNode root) {
+    public boolean isValidBST(TreeNode root) {
         return isValidBST(root, null, null);
     }
 
