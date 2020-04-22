@@ -48,8 +48,9 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal{
  * }
  */
 class Solution {
-    // 设置辅助函数, 设置inorder的start, end决定递归终止条件; 根据post的特性, 从后往前先全部是右子树, 后为左子树
+    // 提升效率1 : 设置辅助函数, 设置inorder的start, end决定递归终止条件; 根据post的特性, 从后往前先全部是右子树, 后为左子树
     // 所以设置全局变量postIndex, 只需要--操作即可, 减少了postOrder的start、end两个参数
+    // 提升效率2 : 使用Hashmap存储所有的inOrder值, 这样辅助函数不需要每次都遍历数组, 可用O(1)的复杂度取出root.val所处的index
     int postIndex;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         if(postorder == null || postorder.length != inorder.length) return null;
