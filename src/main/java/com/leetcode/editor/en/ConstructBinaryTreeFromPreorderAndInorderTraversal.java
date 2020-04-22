@@ -22,8 +22,6 @@
 
 package com.leetcode.editor.en;
 
-import sun.reflect.generics.tree.Tree;
-
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal{
     public class TreeNode {
         int val;
