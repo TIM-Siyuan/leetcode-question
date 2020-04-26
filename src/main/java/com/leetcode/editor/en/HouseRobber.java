@@ -41,7 +41,7 @@ public class HouseRobber{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     private int[] memo;
-    /*
+    /* 递归
     public int rob(int[] nums) {
         memo = new int[nums.length];
         Arrays.fill(memo, -1);
@@ -61,7 +61,9 @@ class Solution {
 
         return res;
     }*/
-    public int rob(int[] nums) {
+
+   /* DP
+   public int rob(int[] nums) {
         int n = nums.length;
         if(n == 0) return 0;
         memo = new int[n];
@@ -75,9 +77,23 @@ class Solution {
             }
         }
         return memo[0];
+    }*/
+
+    //DP优化
+    public int rob(int[] nums) {
+       int n = nums.length;
+       if(n == 0) return 0;
+       int dp_i_1 = 0, dp_i_2 = 0;
+       int dp_i = 0;
+       for(int i = n - 1; i >= 0; i--){
+           dp_i = Math.max(dp_i_1, nums[i] + dp_i_2);
+           dp_i_2 = dp_i_1;
+           dp_i_1 = dp_i;
+       }
+       return dp_i;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
-
 
 }
