@@ -33,7 +33,7 @@ public class LongestIncreasingSubsequence{
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int lengthOfLIS(int[] nums) {
+   /* public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         if(n == 0) return 0;
         int[] memo = new int[n + 1];
@@ -46,17 +46,42 @@ class Solution {
                     memo[i] = Math.max(memo[i], 1 + memo[j]);
             }
         }
-       /* for(int k = 0; k < n; k++){
+       *//* for(int k = 0; k < n; k++){
             if(result < memo[k])
                 result = memo[k];
         }
-        return result;*/
+        return result;*//*
 
         int res = memo[0];
         for(int i = 1 ; i < nums.length ; i ++)
             res = Math.max(res, memo[i]);
 
         return res;
+    }*/
+
+    //O(NlogN) 纸牌
+    public int lengthOfLIS(int[] nums){
+        int[] top = new int[nums.length];
+        int piles = 0;
+        for(int i = 0; i < nums.length; i++){
+            int poker = nums[i];
+
+            int left = 0, right = piles;
+            while(left < right){
+                int mid = (left + right) / 2;
+                if(top[mid] > poker){
+                    right = mid;
+                }else if(top[mid] < poker){
+                    left = mid + 1;
+                }else{
+                    right = mid;
+                }
+            }
+
+            if(left == piles) piles++;
+            top[left] = poker;
+        }
+        return piles;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
