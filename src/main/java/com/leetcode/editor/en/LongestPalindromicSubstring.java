@@ -34,10 +34,6 @@ class Solution {
         int n = s.length();
         if(n == 0) return s;
         boolean[][] dp = new boolean[n][n];
-        for(int i = 0; i < n; i++){
-            Arrays.fill(dp[i], false);
-            dp[i][i] = true;
-        }
         int max = 0;
         String res = s.substring(0, 1);
         for(int i = n - 1; i >= 0; i--){
