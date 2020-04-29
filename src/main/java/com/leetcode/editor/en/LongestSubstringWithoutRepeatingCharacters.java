@@ -37,6 +37,8 @@
 
 package com.leetcode.editor.en;
 
+import java.util.HashMap;
+
 public class LongestSubstringWithoutRepeatingCharacters{
     public static void main(String[] args) {
        Solution solution = new LongestSubstringWithoutRepeatingCharacters().new Solution();
@@ -45,7 +47,7 @@ public class LongestSubstringWithoutRepeatingCharacters{
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    /*public int lengthOfLongestSubstring(String s) {
         int[] freq = new int[256];
         int l = 0, r = -1;
         int res = 0;
@@ -57,7 +59,29 @@ class Solution {
             res = Math.max(res, r-l+1);
         }
         return res;
+    }*/
+
+    public int lengthOfLongestSubstring(String s){
+        int left = 0, right = 0;
+        HashMap<Character, Integer> window = new HashMap<>();
+        int res = 0;
+
+        while(right < s.length()){
+            char c1 = s.charAt(right);
+            window.put(c1, window.getOrDefault(c1, 0) + 1);
+            right++;
+
+            while (window.get(c1) > 1){
+                char c2 = s.charAt(left);
+                window.put(c2, window.getOrDefault(c2, 0) - 1);
+                left++;
+            }
+
+            res = Math.max(res, right - left);
+        }
+        return res;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
