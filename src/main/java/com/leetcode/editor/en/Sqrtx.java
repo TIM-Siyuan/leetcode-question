@@ -63,6 +63,7 @@ class Solution {
             int mid = left + (right - left) / 2;
             // 或者用 x / mid >= mid 判断
             if (Math.pow(mid, 2) <= x)
+
                 left = mid + 1;
             else if(Math.pow(mid, 2) > x)
                 right = mid;
