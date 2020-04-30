@@ -47,11 +47,11 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
-public class MinStack{
+/*public class MinStack{
     public static void main(String[] args) {
        Solution solution = new MinStack().new Solution();
        
-    }
+    }*/
    /* 1. ArrayList<int[]>
     2. PriorityQueue + Stack
     3. Stack + Stack
@@ -98,6 +98,4 @@ class MinStack {
  * int param_4 = obj.getMin();
  */
 //leetcode submit region end(Prohibit modification and deletion)
-
-
-}
+//}
