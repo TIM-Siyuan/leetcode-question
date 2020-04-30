@@ -71,9 +71,7 @@ class Solution {
         }
         return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
     }
-    }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)
-
-
 }
