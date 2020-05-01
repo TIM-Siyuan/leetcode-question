@@ -50,9 +50,13 @@ class Solution {
         return res;
     }*/
 
-    //最小值在左边, 中间值一定小于右边界;
-    //因为需要mid, mid+1相互比较; 所以left或者right需要一个为mid, 不然跳过了mid
-    //此处right=mid, 因为需要nums[right]进行比较
+
+    //因为要用num[right]做对比, 所以right的范围必须可取;
+    //因为没有mid, 所以必须有一边为mid, 到底哪边直接等于mid, 特殊考虑只剩下两个数的情况.
+    //因为向下取整, 所以mid = left, 这时如果是{2, 1} 则需要left+1, 假如left=mid则死循环; 如果是{1, 2}, 则右往左移动一格; 所以只有right = mid
+    //而且while条件left必须小于right, 如果相等的话, 因为有一方为mid, 则死循环
+    //不用担心nums.length-1没法在循环中被考虑到; 因为返回的是一个数值, 而不是-1, 无论{2, 1}, {1, 2}, {1, 1}都能返回正确结果
+
     public int findMin(int[] nums) {
         int left = 0, right = nums.length - 1;
         while (left < right) {
