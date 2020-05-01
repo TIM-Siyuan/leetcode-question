@@ -65,7 +65,7 @@ class Solution {
 */
 
     //只有两个数的时候, 向下取整, nums[left]等于nums[mid], 但是nums[mid] != target;
-    //所以相等时要放入右边 所以 nums[mid] >= left
+    //所以相等时要进入右端搜寻, 所以 nums[mid] >= nums[left]
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0) return -1;
         int left = 0, right = nums.length - 1;
