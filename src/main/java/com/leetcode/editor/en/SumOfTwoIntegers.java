@@ -31,6 +31,9 @@ public class SumOfTwoIntegers{
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    //不考虑进位的加 == 异或
+    //只考虑进位的加 == 与
+    //递归不断将两者相加, 当没有进位的时候得到结果
     public int getSum(int a, int b) {
         // 当carry == 0时, 结束返回sum
         if(b == 0) return a;
