@@ -48,7 +48,6 @@
 
 package com.leetcode.editor.en;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -60,7 +59,7 @@ public class NonOverlappingIntervals{
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int eraseOverlapIntervals(int[][] intervals) {
+    /*public int eraseOverlapIntervals(int[][] intervals) {
         if(intervals.length == 0) return 0;
         //贪心算法: 按照结尾排序, 每次选择结尾最早的
         Arrays.sort(intervals, new Comparator<int[]>() {
@@ -79,6 +78,38 @@ class Solution {
                 count++;
             }
             end = intervals[i][1];
+        }
+        return count;
+    }*/
+
+    public int eraseOverlapIntervals(int[][] intervals){
+        int n = intervals.length;
+        //减去最大的没有overlap的区间数, 就是需要删除的区间数
+        return n - intervalSchedule(intervals);
+    }
+
+    private int intervalSchedule(int[][] intervals){
+        if(intervals.length == 0) return 0;
+        //按end升序排序
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[1] - o2[1];
+            }
+        });
+        /* 至少有一个区间不相交
+        int count = 1;
+        int x_end = intervals[0][1];
+        */
+        //x_end初始为-∞, 因为区间有可能为负数
+        int count = 0;
+        int x_end = Integer.MIN_VALUE;
+        for(int[] interval : intervals){
+            int start = interval[0];
+            if(start >= x_end){
+                count++;
+                x_end = interval[1];
+            }
         }
         return count;
     }
