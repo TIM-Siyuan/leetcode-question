@@ -97,13 +97,14 @@ class Solution {
                 return o1[1] - o2[1];
             }
         });
-        /* 至少有一个区间不相交
+//         至少有一个区间不相交
         int count = 1;
         int x_end = intervals[0][1];
-        */
-        //x_end初始为-∞, 因为区间有可能为负数
+        /*
+        x_end初始为-∞, 因为区间有可能为负数;
+        最好不要这样写, 因为有可能刚好只有一个区间, 需要计算但是不满足start的条件, 则结果错
         int count = 0;
-        int x_end = Integer.MIN_VALUE;
+        int x_end = Integer.MIN_VALUE;*/
         for(int[] interval : intervals){
             int start = interval[0];
             if(start >= x_end){
