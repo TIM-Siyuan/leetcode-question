@@ -16,8 +16,6 @@
 
 package com.leetcode.editor.en;
 
-import com.sun.org.apache.xpath.internal.objects.XNull;
-
 public class ReverseLinkedList{
     public static void main(String[] args) {
        Solution solution = new ReverseLinkedList().new Solution();
