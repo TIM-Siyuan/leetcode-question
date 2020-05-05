@@ -61,6 +61,27 @@ class Solution {
         }
         return dp_i20;
     }
+
+//  一次交易由买入和卖出构成, 至少需要两天。所以说有效的限制 k 应该不超过 n/2,
+//  如果超过, 就没有约束作用了, 相当于 k = +infinity.
+//  1. 没有判断 maxk > n/2 则 测试用例:[]报错
+//  2. base case 使用Integer.MIN_VALUE而没有使用 -price[i], 测试用例[1, 2, 3, 4, 5]报错
+    /*
+    int maxProfit_k_any(int max_k, int[] prices) {
+    int n = prices.length;
+    if (max_k > n / 2)
+        return maxProfit_k_inf(prices);
+
+    int[][][] dp = new int[n][max_k + 1][2];
+    for (int i = 0; i < n; i++)
+        for (int k = max_k; k >= 1; k--) {
+            if (i - 1 == -1) { *//* 处理 base case *//* }
+            dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]);
+            dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]);
+        }
+    return dp[n - 1][max_k][0];
+    }*/
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
