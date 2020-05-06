@@ -32,15 +32,15 @@ import java.util.List;
 public class InsertInterval{
     public static void main(String[] args) {
        Solution solution = new InsertInterval().new Solution();
-       int[][] nums = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
-       int[] num = {4, 8};
+       int[][] nums = {{1, 3}, {6, 9}};
+       int[] num = {2, 5};
        solution.insert(nums, num);
     }
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        int start = newInterval[0], end = newInterval[1];
+        /*int start = newInterval[0], end = newInterval[1];
         List<int[]> res = new ArrayList<int[]>();
         int index = 0;
         //left
@@ -59,6 +59,26 @@ class Solution {
         while(index < intervals.length){
             res.add(intervals[index++]);
         }
+
+        return res.toArray(new int[res.size()][]);*/
+
+        int start = newInterval[0], end = newInterval[1];
+        List<int[]> res = new ArrayList<int[]>();
+        List<int[]> left = new ArrayList<int[]>();
+        List<int[]> right = new ArrayList<int[]>();
+        for(int i = 0; i < intervals.length; i++){
+            int[] curr = intervals[i];
+            if(curr[1] < start) left.add(curr);
+            else if(curr[0] > end) right.add(curr);
+            else{
+                start = Math.min(start, curr[0]);
+                end = Math.max(end, curr[1]);
+            }
+        }
+
+        res.addAll(left);
+        res.add(new int[]{start, end});
+        res.addAll(right);
 
         return res.toArray(new int[res.size()][]);
     }
