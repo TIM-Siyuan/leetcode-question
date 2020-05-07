@@ -35,6 +35,7 @@ public class InsertInterval{
        int[][] nums = {{1, 3}, {6, 9}};
        int[] num = {2, 5};
        solution.insert(nums, num);
+
     }
   
     //leetcode submit region begin(Prohibit modification and deletion)
