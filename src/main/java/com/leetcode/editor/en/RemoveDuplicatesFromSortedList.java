@@ -42,7 +42,6 @@ public class RemoveDuplicatesFromSortedList{
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null) return null;
-        ListNode fast = head, slow = head;
         ListNode dummyhead = new ListNode(0);
         dummyhead.next = head;
         ListNode cur = head;
