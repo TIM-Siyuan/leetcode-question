@@ -60,7 +60,6 @@ class Solution {
             l2.next = mergeTwoLists(l1, l2.next);
             return l2;
         }
-        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
