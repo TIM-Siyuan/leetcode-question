@@ -16,10 +16,13 @@
 
 package com.leetcode.editor.en;
 
+import java.util.Stack;
+
 public class TrappingRainWater{
     public static void main(String[] args) {
        Solution solution = new TrappingRainWater().new Solution();
-       
+       int[] nums = {0,1,0,2,1,0,1,3,2,1,2,1};
+       solution.trap(nums);
     }
   
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -46,7 +49,7 @@ class Solution {
     }*/
 
     //双指针
-    public int trap(int[] height){
+    /*public int trap(int[] height){
         if(height.length == 0) return 0;
         int n = height.length;
         int left = 0, right = n - 1;
@@ -64,6 +67,63 @@ class Solution {
             else {
                 res += r_max - height[right];
                 right--;
+            }
+        }
+        return res;
+    }*/
+
+    //Stack
+    /*public int trap(int[] height){
+        Stack<Integer> s = new Stack<Integer>();
+        int i = 0, n = height.length, res = 0;
+        while (i < n) {
+            if (s.isEmpty() || height[i] <= height[s.peek()]) {
+                s.push(i++);
+            } else {
+                int t = s.pop();
+                if (s.isEmpty()) continue;
+                res += (Math.min(height[i], height[s.peek()]) - height[t]) * (i - s.peek() - 1);
+            }
+        }
+        return res;
+    }*/
+
+    //单调栈
+    public int trap(int[] height){
+        int n = height.length;
+        if(n < 2) return 0;
+        //高度
+        Stack<Integer> sth = new Stack<Integer>();
+        //宽度(坐标)
+        Stack<Integer> sti = new Stack<Integer>();
+        int res = 0;
+        int maxh = 0;
+        for(int i = 0; i < n; i++){
+            int nh = height[i];
+            //维护单调栈:
+            //如果现在的高度大于之前的最高高度, 将比其小的元素都剔除并计算可存水量; 压入最高高度, 其左边的值(均小于最高值的)已经没有意义
+            if(nh >= maxh){
+                while (!sth.isEmpty()) {
+                    int h = sth.pop();
+                    int j = sti.pop();
+                    //如果pop了之后栈为空说明此为左壁, 即之前的最高值, 不能再装任何水, 所以退出
+                    if(sth.isEmpty()) break;
+                    res += (j - sti.peek()) * (maxh - h);
+                }
+                maxh = nh;
+                sth.push(nh);
+                sti.push(i);
+            }
+            //如果比最高小(所以栈必不可能为空), 但是比某几个元素大, 水量计算方法相同;
+            //此时相当于一层一层的填充水量(水平填充); 因为最小值被剔除, 相当于更低的那层已经被填满消失, 后续可能填充同一位置更高的一层
+            else { // nh < maxh
+                while (sth.peek() <= nh){
+                    int h = sth.pop();
+                    int j = sti.pop();
+                    res += (j - sti.peek()) * (nh - h);
+                }
+                sth.push(nh);
+                sti.push(i);
             }
         }
         return res;
