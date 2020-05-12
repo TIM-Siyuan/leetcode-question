@@ -29,7 +29,8 @@ import java.util.List;
 public class ThreeSum{
     public static void main(String[] args) {
        Solution solution = new ThreeSum().new Solution();
-       
+       int[] nums = {-2, -2, -2, 0, 0, 0,1 ,1,3,4,4};
+       solution.threeSum(nums);
     }
   
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -41,7 +42,8 @@ class Solution {
             //法1: 防止重复元素, 因为固定同一个数得到的结果是重复的, 又确保i==0可进入判断; 法2: 一开始不处理, 结果存入Set去重;
             if(i == 0 || nums[i] != nums[i - 1]){
                 //数组有序; 如果开头已经大于0, 后序不可能为0;
-                if(nums[i] > 0) break;
+                if(nums[i] > 0) continue; //too big
+                if(nums[i] + 2 * nums[nums.length - 1] < 0) continue; // too small
                 //l从i+1开始, 不重头开始是因为比l小的可能的结果, 已经在之前算过
                 int l = i + 1, r = nums.length - 1, target = -nums[i];
                 while (l < r){
