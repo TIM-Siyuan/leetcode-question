@@ -72,13 +72,14 @@ import java.util.*;
 
 public class OpenTheLock{
     public static void main(String[] args) {
-       Solution solution = new OpenTheLock().new Solution();
-       
+        Solution solution = new OpenTheLock().new Solution();
+        String[] deadends = {"0201","0101","0102","1000","2002"};
+        solution.openLock(deadends, "0202");
     }
-  
+
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int openLock(String[] deadends, String target) {
+   /* public int openLock(String[] deadends, String target) {
         HashSet<String> deadset = new HashSet<>();
         for(String s: deadends)
             deadset.add(s);
@@ -114,6 +115,108 @@ class Solution {
                         return visited.get(next);
                 }
             }
+        }
+        return -1;
+    }*/
+
+    private String plusOne(String s, int j){
+        char[] ch = s.toCharArray();
+        if(ch[j] == '9') ch[j] = '0';
+        else ch[j] += 1;
+        return new String(ch);
+    }
+
+    private String minusOne(String s, int j){
+        char[] ch = s.toCharArray();
+        if(ch[j] == '0') ch[j] = '9';
+        else ch[j] -= 1;
+        return new String(ch);
+    }
+
+    /*public int openLock(String[] deadends, String target) {
+        // 记录需要跳过的死亡密码
+        HashSet<String> deads = new HashSet<>();
+        for(String s : deadends) deads.add(s);
+        if(deads.contains(target)) return -1;
+        if(deads.contains("0000")) return -1;
+        // 记录已经穷举过的密码，防止走回头路
+        Set<String> visited = new HashSet<>();
+        Queue<String> q = new ArrayDeque<>();
+        // 从起点开始启动广度优先搜索
+        int step = 0;
+        q.offer("0000");
+        visited.add("0000");
+
+        while (!q.isEmpty()){
+            int sz = q.size();
+            *//* 将当前队列中的所有节点向周围扩散 *//*
+            for(int i = 0; i < sz; i++){
+                String cur = q.poll();
+                *//* 判断是否到达终点 *//*
+                if(deads.contains(cur)) continue;
+                if(cur.equals(target)) return step;
+
+                for(int j = 0; j < 4; j++){
+                    String up = plusOne(cur, j);
+                    if(!visited.contains(up)){
+                        q.offer(up);
+                        visited.add(up);
+                    }
+                    String down = minusOne(cur, j);
+                    if(!visited.contains(down)){
+                        q.offer(down);
+                        visited.add(down);
+                    }
+                }
+            }
+            step++;
+        }
+        return -1;
+    }*/
+
+
+    //Bi-BFS
+    public int openLock(String[] deadends, String target){
+        HashSet<String> deads = new HashSet<>();
+        for(String s : deadends) deads.add(s);
+        // 用集合不用队列，可以O(1)快速判断元素是否存在; 队列需要遍历判断(单向BFS也可用集合, 但是这样效率低)
+        HashSet<String> q1 = new HashSet<>();
+        HashSet<String> q2 = new HashSet<>();
+        HashSet<String> visited = new HashSet<>();
+
+        int step = 0;
+        q1.add("0000");
+        q2.add(target);
+
+        while (!q1.isEmpty() && !q2.isEmpty()){
+            // 优化: 扩散点更少的
+            if (q1.size() > q2.size()) {
+                // 交换 q1 和 q2
+                HashSet<String> tmp = q1;
+                q1 = q2;
+                q2 = tmp;
+            }
+            // 遍历的过程中不能修改对象, 所以用 temp 存储扩散结果; 每次新建temp, 当遇到deadends无法扩散的时候, temp为0退出;
+            HashSet<String> temp = new HashSet<>();
+
+            for(String cur : q1){
+                if(deads.contains(cur)) continue;
+                //每遍历一层则step++; 当q1, q2都遍历完同一层的时候, 再下一轮则包含相同元素退出返回step
+                if(q2.contains(cur)) return step;
+                visited.add(cur);
+
+                for(int j = 0; j < 4; j++){
+                    String up = plusOne(cur, j);
+                    if(!visited.contains(up)) temp.add(up);
+                    String down = minusOne(cur, j);
+                    if(!visited.contains(down)) temp.add(down);
+                }
+            }
+            step++;
+            // temp 相当于 q1
+            // 这里交换 q1 q2，下一轮 while 就是扩散 q2
+            q1 = q2;
+            q2 = temp;
         }
         return -1;
     }
