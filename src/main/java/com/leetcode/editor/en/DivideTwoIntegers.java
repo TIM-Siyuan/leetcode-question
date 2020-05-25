@@ -47,7 +47,7 @@ public class DivideTwoIntegers{
 class Solution {
     //考点: int是否overflow; 除法的本质是最多有多少个相加小于dividend(相加也可认为divisor乘个数)
     //类似贪心: 不能用乘法, divisor不断右移乘2, 找到小于dividend的最大数(记录乘数即divisor扩大的倍数 && dividend相减最大数之后剩下的部分)
-    public int divide(int dividend, int divisor) {
+    /*public int divide(int dividend, int divisor) {
         //只有一种情况会溢出, 特判
         if(dividend == Integer.MIN_VALUE && divisor == -1)
             return Integer.MAX_VALUE;
@@ -71,6 +71,21 @@ class Solution {
         }
         //处理正负问题
         return (dividend >= 0) == (divisor > 0) ? res : -res;
+    }*/
+
+    //递归 -- TLE
+    public int divide(int dividend, int divisor){
+        if(dividend == Integer.MIN_VALUE && divisor == -1)
+            return Integer.MAX_VALUE;
+        int m = Math.abs(dividend), n = Math.abs(divisor), res = 0;
+        if(m < n) return 0;
+        int t = n, x = 1;
+        while (m > (t << 1)){
+            t <<= 1;
+            x <<= 1;
+        }
+        res += x + divide(m - t, n);
+        return ((dividend < 0) ^ (divisor < 0)) ? res : -res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
