@@ -68,7 +68,7 @@ class Solution {
         return new String(A + "A" + B + "B");
     }*/
 
-    /*public String getHint(String secret, String guess) {
+    public String getHint(String secret, String guess) {
         if(secret == null || secret.length() == 0 || guess == null || guess.length() == 0) return "";
         int A = 0, B = 0, n = secret.length();
         int[] nums = new int[10];
@@ -85,7 +85,7 @@ class Solution {
             }
         }
         return new String(A + "A" + B + "B");
-    }*/
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
