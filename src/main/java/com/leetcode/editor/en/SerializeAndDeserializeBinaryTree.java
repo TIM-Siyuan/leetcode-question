@@ -33,6 +33,10 @@
 
 package com.leetcode.editor.en;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class SerializeAndDeserializeBinaryTree{
     public class TreeNode {
         int val;
@@ -58,7 +62,7 @@ public class SerializeAndDeserializeBinaryTree{
 public class Codec {
 
     // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
+/*    public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
         helperS(root, sb);
         return sb.toString();
@@ -70,9 +74,9 @@ public class Codec {
             return;
         }
 
+        sb.append(node.val).append(",");
         helperS(node.left, sb);
         helperS(node.right, sb);
-        sb.append(node.val).append(",");
     }
 
     // Decodes your encoded data to tree.
@@ -93,6 +97,48 @@ public class Codec {
         node.right = helperD(vals, index);
 
         return node;
+    }*/
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        helperS(root, sb);
+        return sb.toString();
+    }
+
+    private void helperS(TreeNode node, StringBuilder sb){
+        if(node == null){
+            sb.append("null").append(",");
+            return;
+        }
+
+        sb.append(node.val).append(",");
+        helperS(node.left, sb);
+        helperS(node.right, sb);
+
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if(data == null) return null;
+        String[] strArr = data.split(",");
+        Queue<String> queue = new LinkedList<>();
+        Collections.addAll(queue, strArr);
+        return helperD(queue);
+    }
+
+    private TreeNode helperD(Queue<String> queue){
+        if(queue.isEmpty()){
+            return null;
+        }
+        String s = queue.poll();
+        if(s.equals("null")){
+            return null;
+        }
+        TreeNode root = new TreeNode(Integer.parseInt(s));
+        root.left = helperD(queue);
+        root.right = helperD(queue);
+        return root;
     }
 }
 
