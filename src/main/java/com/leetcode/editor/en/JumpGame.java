@@ -44,7 +44,8 @@ public class JumpGame{
   
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public boolean canJump(int[] nums) {
+    // Greedy
+    /*public boolean canJump(int[] nums) {
         int n = nums.length;
         int farthest = 0;
         for(int i = 0; i < n - 1; i++){
@@ -54,6 +55,26 @@ class Solution {
             if(farthest <= i) return false;
         }
         return farthest >= n - 1;
+    }*/
+
+    // DP
+    public boolean canJump(int[] nums){
+        int n = nums.length;
+        boolean[] f = new boolean[n];
+        f[0] = true; //initialization
+
+        for(int j = 1; j < n; ++j){
+            f[j] = false;
+            // previous stone i
+            // last jump is from i to j
+            for(int i = 0; i < j; ++i){
+                if(f[i] && i + nums[i] >= j){
+                    f[j] = true;
+                    break;
+                }
+            }
+        }
+        return f[n - 1];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
