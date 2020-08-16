@@ -34,6 +34,7 @@ class Solution {
     public int jump(int[] nums) {
         int n = nums.length;
         int jumps = 0, end = 0, farthest = 0;
+        /* 写法一
         // 最后一个index不用计算所以n-1
         for(int i = 0; i < n - 1; i++){
             farthest = Math.max(nums[i] + i, farthest);
@@ -44,9 +45,22 @@ class Solution {
                 // curEnd = curFarthest is like getting the queue size (level size) for the next level you are traversing.
                 end = farthest;
             }
+        }*/
+
+        /*写法二
+        for(int i = 0; end < n - 1; end = farthest){
+            jumps++;
+            while (i < n && i <= end){
+                farthest = Math.max(farthest, i + nums[i]);
+                i++;
+            }
+            if(end == farthest) return -1;
         }
+        */
         return jumps;
     }
+
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
